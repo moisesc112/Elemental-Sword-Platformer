@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8kpjv2x3au5h"]
+
+[ext_resource type="Script" path="res://skill.gd" id="1_yxht6"]
+
+[node name="Skill" type="ColorRect"]
+offset_right = 86.0
+offset_bottom = 81.0
+color = Color(0.317647, 0.317647, 0.317647, 1)
+script = ExtResource("1_yxht6")
+
+[node name="SkillImage" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 75.0
+offset_bottom = 73.0
+
+[node name="SkillTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="SkillTimer" to="." method="_on_skill_timer_timeout"]

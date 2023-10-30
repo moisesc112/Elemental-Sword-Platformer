@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bodrolnseekj8"]
+
+[ext_resource type="PackedScene" uid="uid://7geiokscqb02" path="res://musashi.tscn" id="2_86c4f"]
+[ext_resource type="PackedScene" uid="uid://dc632xnckryin" path="res://skills.tscn" id="2_kalke"]
+
+[node name="Main" type="Node"]
+
+[node name="Musashi" parent="." instance=ExtResource("2_86c4f")]
+
+[node name="Skills" parent="." instance=ExtResource("2_kalke")]
+
+[connection signal="skill_activated" from="Skills" to="Musashi" method="_on_skills_skill_activated"]
+[connection signal="skill_completed" from="Skills" to="Musashi" method="_on_skills_skill_completed"]
