@@ -675,7 +675,7 @@ size = Vector2(1150, 120)
 [node name="Main" type="Node"]
 
 [node name="Musashi" parent="." instance=ExtResource("2_86c4f")]
-position = Vector2(135, 472)
+position = Vector2(129, 421)
 
 [node name="Skills" parent="." instance=ExtResource("2_kalke")]
 
