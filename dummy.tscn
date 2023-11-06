@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://de5f7f05sx3it"]
+
+[ext_resource type="Script" path="res://dummy.gd" id="1_r1wvh"]
+[ext_resource type="Texture2D" uid="uid://c4pn0a0rom5os" path="res://art/fire art/Target Dummy.png" id="1_vee0m"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_npajv"]
+radius = 23.0
+height = 68.0
+
+[node name="Area2D" type="Area2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_r1wvh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vee0m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_npajv")
+
+[node name="healthbar" type="ProgressBar" parent="."]
+visible = false
+modulate = Color(1, 0.168627, 0, 1)
+offset_left = -25.0
+offset_top = -46.0
+offset_right = 76.0
+offset_bottom = -33.0
+scale = Vector2(0.5, 0.5)
+max_value = 5.0
+show_percentage = false
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

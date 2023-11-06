@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://7geiokscqb02"]
+[gd_scene load_steps=27 format=3 uid="uid://7geiokscqb02"]
 
 [ext_resource type="Texture2D" uid="uid://dhnbdq1gftggt" path="res://art/musashi/attack_0.png" id="1_134dd"]
 [ext_resource type="Script" path="res://musashi.gd" id="1_sydoj"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://cojlbm7wqqn4e" path="res://art/musashi/idle_0.png" id="9_a3i4s"]
 [ext_resource type="Texture2D" uid="uid://dhmkn5i0jt7ws" path="res://art/musashi/idle_1.png" id="10_2ivcm"]
 [ext_resource type="Texture2D" uid="uid://bqxa18ytihcqy" path="res://art/musashi/idle_2.png" id="11_3ye0t"]
-[ext_resource type="Texture2D" uid="uid://csxfnecn2a0ju" path="res://art/musashi/x_1.png" id="11_88si1"]
 [ext_resource type="Texture2D" uid="uid://cehk1laaij37o" path="res://art/musashi/idle_3.png" id="12_n3aen"]
 [ext_resource type="Texture2D" uid="uid://bj3viaya8dsc1" path="res://art/musashi/jump_0.png" id="13_70xdx"]
 [ext_resource type="Texture2D" uid="uid://bndfw4w3wec0u" path="res://art/musashi/jump_1.png" id="14_f8bef"]
@@ -25,7 +24,6 @@
 [ext_resource type="Texture2D" uid="uid://c4dqy0e8evl0b" path="res://art/musashi/run_3.png" id="20_0f6m1"]
 [ext_resource type="Texture2D" uid="uid://ykn1goi70316" path="res://art/musashi/run_4.png" id="21_1xcus"]
 [ext_resource type="Texture2D" uid="uid://b31dme68lj5x7" path="res://art/musashi/run_5.png" id="22_xwis1"]
-[ext_resource type="Texture2D" uid="uid://c8j2ae0n5d3lc" path="res://art/musashi/x_2.png" id="26_qvp4v"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_00qkk"]
 animations = [{
@@ -57,14 +55,6 @@ animations = [{
 "loop": false,
 "name": &"attack",
 "speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("11_88si1")
-}],
-"loop": true,
-"name": &"damage",
-"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -122,18 +112,11 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 7.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("26_qvp4v")
-}],
-"loop": true,
-"name": &"victory",
-"speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrkig"]
-size = Vector2(56, 72)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1qicu"]
+radius = 39.0
+height = 80.0
 
 [node name="Musashi" type="CharacterBody2D"]
 script = ExtResource("1_sydoj")
@@ -141,11 +124,11 @@ fire_strike_attack = ExtResource("2_oaqnk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_00qkk")
-animation = &"victory"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-12, 12)
-shape = SubResource("RectangleShape2D_wrkig")
+position = Vector2(-14, 8)
+shape = SubResource("CapsuleShape2D_1qicu")
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -154,17 +137,3 @@ position = Vector2(60, 0)
 
 [node name="LeftMarker" type="Marker2D" parent="."]
 position = Vector2(-74, 0)
-
-[node name="healthbar" type="ProgressBar" parent="."]
-visible = false
-modulate = Color(0.317647, 0.686275, 0.0313726, 1)
-offset_left = -56.0
-offset_top = -40.0
-offset_right = 77.0
-offset_bottom = -27.0
-scale = Vector2(0.6, 0.6)
-max_value = 5.0
-show_percentage = false
-
-[node name="on_hit_timer" type="Timer" parent="."]
-wait_time = 0.5

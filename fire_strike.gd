@@ -1,8 +1,11 @@
 extends Area2D
 
+class_name fire_strike
+
 var SPEED = 100
 var height = 72
 var radius = 20
+var damage = 1
 
 
 func _physics_process(delta):
@@ -17,12 +20,20 @@ func destroy():
 	queue_free()
 
 
-func _on_area_entered(_area):
-	destroy()
+func _on_area_entered(area):
+	if area is Dummy:
+		var dummy: Dummy = area as Dummy
+		dummy.take_damage(damage)
+		dummy.update_health()
+		destroy()
+	else:
+		destroy()
 
 
-func _on_body_entered(_body):
-	destroy()
+func _on_body_entered(body):
+	if body is Player: return
+	else:
+		destroy()
 
 
 func _on_animated_sprite_2d_frame_changed():
