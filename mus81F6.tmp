@@ -1,0 +1,139 @@
+[gd_scene load_steps=27 format=3 uid="uid://7geiokscqb02"]
+
+[ext_resource type="Texture2D" uid="uid://dhnbdq1gftggt" path="res://art/musashi/attack_0.png" id="1_134dd"]
+[ext_resource type="Script" path="res://musashi.gd" id="1_sydoj"]
+[ext_resource type="Texture2D" uid="uid://cgar161t05i48" path="res://art/musashi/attack_1.png" id="2_bmt37"]
+[ext_resource type="PackedScene" uid="uid://daaux2ol3qd7g" path="res://fire_strike.tscn" id="2_oaqnk"]
+[ext_resource type="Texture2D" uid="uid://da3qsemc2s1y8" path="res://art/musashi/attack_2.png" id="3_cg0s1"]
+[ext_resource type="Texture2D" uid="uid://dn6no0r3jitfo" path="res://art/musashi/attack_3.png" id="4_065mh"]
+[ext_resource type="Texture2D" uid="uid://phdi7qvt4r22" path="res://art/musashi/attack_4.png" id="5_argfy"]
+[ext_resource type="Texture2D" uid="uid://bliw8sv5fq42n" path="res://art/musashi/attack_5.png" id="6_ek1h3"]
+[ext_resource type="Texture2D" uid="uid://dmu85mn4beydn" path="res://art/musashi/attack_6.png" id="7_r8vy1"]
+[ext_resource type="Texture2D" uid="uid://d0276oss2g8hv" path="res://art/musashi/attack_7.png" id="8_lea6b"]
+[ext_resource type="Texture2D" uid="uid://cojlbm7wqqn4e" path="res://art/musashi/idle_0.png" id="9_a3i4s"]
+[ext_resource type="Texture2D" uid="uid://dhmkn5i0jt7ws" path="res://art/musashi/idle_1.png" id="10_2ivcm"]
+[ext_resource type="Texture2D" uid="uid://bqxa18ytihcqy" path="res://art/musashi/idle_2.png" id="11_3ye0t"]
+[ext_resource type="Texture2D" uid="uid://cehk1laaij37o" path="res://art/musashi/idle_3.png" id="12_n3aen"]
+[ext_resource type="Texture2D" uid="uid://bj3viaya8dsc1" path="res://art/musashi/jump_0.png" id="13_70xdx"]
+[ext_resource type="Texture2D" uid="uid://bndfw4w3wec0u" path="res://art/musashi/jump_1.png" id="14_f8bef"]
+[ext_resource type="Texture2D" uid="uid://bus2eucc4kkc3" path="res://art/musashi/jump_2.png" id="15_053xr"]
+[ext_resource type="Texture2D" uid="uid://cpmqha8hdfl8o" path="res://art/musashi/jump_3.png" id="16_aq38a"]
+[ext_resource type="Texture2D" uid="uid://c76blabtqds72" path="res://art/musashi/run_0.png" id="17_5l1by"]
+[ext_resource type="Texture2D" uid="uid://h5hxm2tbikck" path="res://art/musashi/run_1.png" id="18_15srg"]
+[ext_resource type="Texture2D" uid="uid://c77knrl78evjk" path="res://art/musashi/run_2.png" id="19_72lgl"]
+[ext_resource type="Texture2D" uid="uid://c4dqy0e8evl0b" path="res://art/musashi/run_3.png" id="20_0f6m1"]
+[ext_resource type="Texture2D" uid="uid://ykn1goi70316" path="res://art/musashi/run_4.png" id="21_1xcus"]
+[ext_resource type="Texture2D" uid="uid://b31dme68lj5x7" path="res://art/musashi/run_5.png" id="22_xwis1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_00qkk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_134dd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_bmt37")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cg0s1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_065mh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_argfy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ek1h3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_r8vy1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lea6b")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_a3i4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_2ivcm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_3ye0t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_n3aen")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_70xdx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_f8bef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_053xr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_aq38a")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_5l1by")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_15srg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_72lgl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_0f6m1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_1xcus")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_xwis1")
+}],
+"loop": true,
+"name": &"run",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1qicu"]
+radius = 39.0
+height = 80.0
+
+[node name="Musashi" type="CharacterBody2D"]
+script = ExtResource("1_sydoj")
+fire_strike_attack = ExtResource("2_oaqnk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_00qkk")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-14, 8)
+shape = SubResource("CapsuleShape2D_1qicu")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="RightMarker" type="Marker2D" parent="."]
+position = Vector2(60, 0)
+
+[node name="LeftMarker" type="Marker2D" parent="."]
+position = Vector2(-74, 0)

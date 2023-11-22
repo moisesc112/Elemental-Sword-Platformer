@@ -1,0 +1,147 @@
+[gd_scene load_steps=19 format=3 uid="uid://byiantci66jqe"]
+
+[ext_resource type="Script" path="res://mushroom_monster.gd" id="1_2wrsq"]
+[ext_resource type="Texture2D" uid="uid://dxxbbgdwebapu" path="res://art/monsters/Mushroom/Idle.png" id="1_vwjfg"]
+[ext_resource type="Texture2D" uid="uid://bhtksc42yd813" path="res://art/monsters/Mushroom/Run.png" id="3_f0dyn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2v01t"]
+radius = 21.0
+height = 84.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2upng"]
+atlas = ExtResource("1_vwjfg")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e78ag"]
+atlas = ExtResource("1_vwjfg")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d505d"]
+atlas = ExtResource("1_vwjfg")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l2l7"]
+atlas = ExtResource("1_vwjfg")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3bjn"]
+atlas = ExtResource("3_f0dyn")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hs4hq"]
+atlas = ExtResource("3_f0dyn")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2owc2"]
+atlas = ExtResource("3_f0dyn")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61gk5"]
+atlas = ExtResource("3_f0dyn")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6r6le"]
+atlas = ExtResource("3_f0dyn")
+region = Rect2(600, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0281k"]
+atlas = ExtResource("3_f0dyn")
+region = Rect2(750, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qd8c"]
+atlas = ExtResource("3_f0dyn")
+region = Rect2(900, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8swpn"]
+atlas = ExtResource("3_f0dyn")
+region = Rect2(1050, 0, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8v6k3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2upng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e78ag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d505d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4l2l7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3bjn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hs4hq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2owc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61gk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6r6le")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0281k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qd8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8swpn")
+}],
+"loop": true,
+"name": &"run",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l4dwx"]
+radius = 28.0
+height = 84.0
+
+[node name="RigidBody2D" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_2wrsq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 14)
+shape = SubResource("CapsuleShape2D_2v01t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_8v6k3")
+animation = &"run"
+frame = 4
+frame_progress = 0.560057
+
+[node name="healthbar" type="ProgressBar" parent="."]
+visible = false
+modulate = Color(1, 0.168627, 0, 1)
+offset_left = -25.0
+offset_top = -46.0
+offset_right = 76.0
+offset_bottom = -33.0
+scale = Vector2(0.5, 0.5)
+max_value = 5.0
+show_percentage = false
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 14)
+shape = SubResource("CapsuleShape2D_l4dwx")
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
