@@ -33,7 +33,7 @@ func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
-	
+
 
 func _ready():
 	hide()
@@ -149,8 +149,6 @@ func calculate_movement(delta):
 	
 	move_and_slide()
 	
-	
-
 
 func set_movement_animation():
 	if velocity.x != 0 and is_on_floor() and hp > 0: 

@@ -8,6 +8,7 @@ var radius = 20
 var damage = 2
 
 
+
 func _physics_process(delta):
 	var direction = Vector2.RIGHT.rotated(rotation)
 	global_position += SPEED * direction * delta

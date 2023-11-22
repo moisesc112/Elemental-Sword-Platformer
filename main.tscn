@@ -1,5 +1,6 @@
 [gd_scene load_steps=37 format=3 uid="uid://bodrolnseekj8"]
 
+
 [ext_resource type="Script" path="res://main.gd" id="1_84kgl"]
 [ext_resource type="PackedScene" uid="uid://7geiokscqb02" path="res://musashi.tscn" id="2_86c4f"]
 [ext_resource type="PackedScene" uid="uid://dc632xnckryin" path="res://skills.tscn" id="2_kalke"]
@@ -10,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://byiantci66jqe" path="res://mushroom_monster.tscn" id="8_iy2vy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jugn4"]
+
 texture = ExtResource("3_08cww")
 0:0/0 = 0
 1:0/0 = 0
