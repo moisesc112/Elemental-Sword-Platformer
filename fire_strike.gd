@@ -5,7 +5,7 @@ class_name fire_strike
 var SPEED = 100
 var height = 72
 var radius = 20
-var damage = 1
+var damage = 2
 
 
 func _physics_process(delta):
@@ -26,12 +26,19 @@ func _on_area_entered(area):
 		dummy.take_damage(damage)
 		dummy.update_health()
 		destroy()
-	else:
-		destroy()
-
+#	elif area is Player:
+#		pass
+#	else:
+#		destroy()
 
 func _on_body_entered(body):
-	if body is Player: return
+	if body is Player:
+		pass
+	elif body is Mushroom:
+		var mushroom: Mushroom = body as Mushroom
+		mushroom.take_damage(damage)
+		mushroom.update_health()
+		destroy()
 	else:
 		destroy()
 

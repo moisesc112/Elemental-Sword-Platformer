@@ -1,10 +1,10 @@
 extends Area2D
 
 class_name Dummy
+signal dummy_death
 
 var hp = 5
-var damage = 1
-var dummy_death = false
+var touch_damage = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,10 +31,13 @@ func set_hp(new_hp):
 	hp = new_hp
 	if hp <= 0:
 		die()
-	print(hp)
-	
+		#player.$AnimatedSprite2D.animation = "victory"
+
 func die():
+	dummy_death.emit()
 	queue_free()
+	print("bye dummy")
+	#Player.victory()
 
 func _on_area_entered(area):
 	pass
@@ -42,6 +45,7 @@ func _on_area_entered(area):
 func _on_body_entered(body):
 	if body is Player:
 		var player: Player = body as Player
-		player.take_damage(damage)
+		player.take_damage(touch_damage)
 		player.update_health()
-
+		
+	

@@ -8,16 +8,16 @@ var skill_in_progress = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if !skill_in_progress:
-		if Input.is_action_pressed("skill_1"):
+		if Input.is_action_just_pressed("skill_1"):
 			skill_activated.emit("skill_1")
 			skill_in_progress = true
 			$Skill1.activate_skill()
-		if Input.is_action_pressed("skill_2"):
+		if Input.is_action_just_pressed("skill_2"):
 			skill_activated.emit("skill_2")
 			skill_in_progress = true
 			$Skill2.activate_skill()

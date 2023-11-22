@@ -1,0 +1,257 @@
+[gd_scene load_steps=33 format=3 uid="uid://b20peb1d0rfr0"]
+
+[ext_resource type="Texture2D" uid="uid://dhnbdq1gftggt" path="res://art/musashi/attack_0.png" id="1_h1ss0"]
+[ext_resource type="Texture2D" uid="uid://cgar161t05i48" path="res://art/musashi/attack_1.png" id="2_jowdj"]
+[ext_resource type="Texture2D" uid="uid://da3qsemc2s1y8" path="res://art/musashi/attack_2.png" id="3_m67nw"]
+[ext_resource type="Texture2D" uid="uid://dn6no0r3jitfo" path="res://art/musashi/attack_3.png" id="4_r5bro"]
+[ext_resource type="Texture2D" uid="uid://phdi7qvt4r22" path="res://art/musashi/attack_4.png" id="5_ixdf6"]
+[ext_resource type="Texture2D" uid="uid://bliw8sv5fq42n" path="res://art/musashi/attack_5.png" id="6_bvkw2"]
+[ext_resource type="Texture2D" uid="uid://dmu85mn4beydn" path="res://art/musashi/attack_6.png" id="7_67f1r"]
+[ext_resource type="Texture2D" uid="uid://d0276oss2g8hv" path="res://art/musashi/attack_7.png" id="8_ruqal"]
+[ext_resource type="Texture2D" uid="uid://csxfnecn2a0ju" path="res://art/musashi/x_1.png" id="9_1vdoj"]
+[ext_resource type="Texture2D" uid="uid://b1af8hyaptwj3" path="res://art/musashi/skills/lightning/Lightning_Yellow.png" id="10_xptyu"]
+[ext_resource type="Texture2D" uid="uid://cojlbm7wqqn4e" path="res://art/musashi/idle_0.png" id="11_1v4m1"]
+[ext_resource type="Texture2D" uid="uid://dhmkn5i0jt7ws" path="res://art/musashi/idle_1.png" id="12_ttbfq"]
+[ext_resource type="Texture2D" uid="uid://bqxa18ytihcqy" path="res://art/musashi/idle_2.png" id="13_11rl3"]
+[ext_resource type="Texture2D" uid="uid://cehk1laaij37o" path="res://art/musashi/idle_3.png" id="14_mc64h"]
+[ext_resource type="Texture2D" uid="uid://bj3viaya8dsc1" path="res://art/musashi/jump_0.png" id="15_iu6pp"]
+[ext_resource type="Texture2D" uid="uid://bndfw4w3wec0u" path="res://art/musashi/jump_1.png" id="16_c4h7x"]
+[ext_resource type="Texture2D" uid="uid://bus2eucc4kkc3" path="res://art/musashi/jump_2.png" id="17_dxhhc"]
+[ext_resource type="Texture2D" uid="uid://cpmqha8hdfl8o" path="res://art/musashi/jump_3.png" id="18_ff6in"]
+[ext_resource type="Texture2D" uid="uid://c76blabtqds72" path="res://art/musashi/run_0.png" id="19_nfq01"]
+[ext_resource type="Texture2D" uid="uid://h5hxm2tbikck" path="res://art/musashi/run_1.png" id="20_hykvy"]
+[ext_resource type="Texture2D" uid="uid://c77knrl78evjk" path="res://art/musashi/run_2.png" id="21_0gec0"]
+[ext_resource type="Texture2D" uid="uid://c4dqy0e8evl0b" path="res://art/musashi/run_3.png" id="22_aur7f"]
+[ext_resource type="Texture2D" uid="uid://ykn1goi70316" path="res://art/musashi/run_4.png" id="23_3jkno"]
+[ext_resource type="Texture2D" uid="uid://b31dme68lj5x7" path="res://art/musashi/run_5.png" id="24_j7cdj"]
+[ext_resource type="Texture2D" uid="uid://c8j2ae0n5d3lc" path="res://art/musashi/x_2.png" id="25_qmcsf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8itf"]
+atlas = ExtResource("10_xptyu")
+region = Rect2(0, 100, 175, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7n6m"]
+atlas = ExtResource("10_xptyu")
+region = Rect2(175, 100, 175, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33onw"]
+atlas = ExtResource("10_xptyu")
+region = Rect2(0, 0, 175, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hf34m"]
+atlas = ExtResource("10_xptyu")
+region = Rect2(175, 0, 175, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sdi6l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_h1ss0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jowdj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_m67nw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_r5bro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ixdf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bvkw2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_67f1r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ruqal")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_1vdoj")
+}],
+"loop": true,
+"name": &"damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_m67nw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_r5bro")
+}],
+"loop": true,
+"name": &"flash1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8itf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7n6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33onw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hf34m")
+}],
+"loop": true,
+"name": &"flash2",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ruqal")
+}],
+"loop": true,
+"name": &"flash3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_1v4m1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ttbfq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_11rl3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_mc64h")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_iu6pp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_c4h7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_dxhhc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ff6in")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_nfq01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_hykvy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_0gec0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_aur7f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_3jkno")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_j7cdj")
+}],
+"loop": true,
+"name": &"run",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_qmcsf")
+}],
+"loop": true,
+"name": &"victory",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_b33bd"]
+script/source = "extends AnimatedSprite2D
+class_name Flash
+
+#var flash_damage = 1
+
+
+# Called when the node enters the scene tree for the first time.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+
+func _on_area_2d_area_entered(area):
+#	if area is Dummy:
+#		var dummy: Dummy = area as Dummy
+#		dummy.take_damage(flash_damage)
+#		dummy.update_health()
+#		print(\"why5\")
+#	if area is Mushroom:
+#		print(\"flash in mushroom\")
+#		var mushroom: Mushroom = area as Mushroom
+#		mushroom.take_damage(flash_damage)
+#		mushroom.update_health()
+	pass
+
+func _on_node_2d_child_entered_tree(node):
+	$AnimatedSprite2D2.show()
+	$AnimatedSprite2D2.play()
+	$AnimatedSprite2D2.animation = \"flash2\"
+	$AnimatedSprite2D2/Area2D.show()
+	await get_tree().create_timer(0.1).timeout
+	$AnimatedSprite2D2.hide()
+	$AnimatedSprite2D2/Area2D.hide()
+
+
+func _on_area_2d_body_entered(body):
+	print(\"why4\")
+#	if body is Player:
+#		print(\"why1\")
+#		pass
+#	elif body is Mushroom:
+#		var mushroom: Mushroom = body as Mushroom
+#		mushroom.take_damage(flash_damage)
+#		mushroom.update_health()
+#		print(\"why2\")
+#	else:
+#		print(\"why3\")
+
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e4nus"]
+size = Vector2(142.139, 80)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(-112, 16)
+scale = Vector2(1.51964, 1)
+sprite_frames = SubResource("SpriteFrames_sdi6l")
+animation = &"flash2"
+script = SubResource("GDScript_b33bd")
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D2"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D2/Area2D"]
+position = Vector2(-13.161, 0)
+shape = SubResource("RectangleShape2D_e4nus")
+
+[connection signal="child_entered_tree" from="." to="AnimatedSprite2D2" method="_on_node_2d_child_entered_tree"]
+[connection signal="area_entered" from="AnimatedSprite2D2/Area2D" to="AnimatedSprite2D2" method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="AnimatedSprite2D2/Area2D" to="AnimatedSprite2D2" method="_on_area_2d_body_entered"]
