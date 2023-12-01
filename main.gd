@@ -15,16 +15,21 @@ var mushroom_2_hp
 func _ready():
 	#new_game()
 	$ui/DashObstructed.hide()
+	$StartMusic/AudioStreamPlayer2D.play()
+	$StartMusic.make_current()
 	pass
 
 
 func new_game():
 	#await get_tree().create_timer(0.1).timeout
+	$StartMusic/AudioStreamPlayer2D.stop()
 	$Musashi.start($StartPosition.position)
 	$Musashi.heal()
 	$ui/Skills.show()
 	$TileMap.show()
 	$ParallaxBackground.show()
+	$LavaLevelMusic/AudioStreamPlayer2D.play()
+	$LavaLevelMusic.is_current()
 	#$DashObstructed.hide()
 
 	await get_tree().create_timer(0.1).timeout
@@ -76,7 +81,12 @@ func _on_child_exiting_tree(node):
 func _on_musashi_death():
 	$ui.show_game_over()
 	$ui/Skills.hide()
-	
+	$LavaLevelMusic/AudioStreamPlayer2D.stop()
+	$GameOverMusic.make_current()
+	$GameOverMusic/AudioStreamPlayer2D.play()
+	await get_tree().create_timer(2).timeout
+	$StartMusic.make_current()
+	$StartMusic/AudioStreamPlayer2D.play()
 	
 	if is_instance_valid(dummy): 
 		dummy.queue_free()

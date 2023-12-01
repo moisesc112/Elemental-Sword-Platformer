@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnwj14vx3oaj0"]
+
+[ext_resource type="Script" path="res://Area2D.gd" id="1_rhuut"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6xvo"]
+size = Vector2(130, 120)
+
+[node name="AirStrike" type="Area2D"]
+position = Vector2(0, -10)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_rhuut")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_d6xvo")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

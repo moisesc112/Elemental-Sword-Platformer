@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bag63rj4ychlb"]
+
+[ext_resource type="AudioStream" uid="uid://c0vynx5srrqu4" path="res://music/Hotline.ogg" id="1_6adfm"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_6adfm")
+autoplay = true
