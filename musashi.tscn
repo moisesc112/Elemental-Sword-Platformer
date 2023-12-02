@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://7geiokscqb02"]
+[gd_scene load_steps=84 format=3 uid="uid://7geiokscqb02"]
 
 [ext_resource type="Texture2D" uid="uid://dhnbdq1gftggt" path="res://art/musashi/attack_0.png" id="1_134dd"]
 [ext_resource type="Script" path="res://musashi.gd" id="1_sydoj"]
@@ -45,6 +45,7 @@
 [ext_resource type="Texture2D" uid="uid://c8j2ae0n5d3lc" path="res://art/musashi/x_2.png" id="26_qvp4v"]
 [ext_resource type="PackedScene" uid="uid://bnwj14vx3oaj0" path="res://air_strike.tscn" id="33_dqfk5"]
 [ext_resource type="PackedScene" uid="uid://bf1a1ie5wyfhn" path="res://water_dash.tscn" id="34_4xem5"]
+[ext_resource type="AudioStream" uid="uid://cmposi20rvm0b" path="res://music/523769__matrixxx__retro-hit.wav" id="46_wvvbd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c5fg6"]
 atlas = ExtResource("4_is2yr")
@@ -761,6 +762,13 @@ wait_time = 0.5
 [node name="AirStrike" parent="." instance=ExtResource("33_dqfk5")]
 
 [node name="WaterDash" parent="." instance=ExtResource("34_4xem5")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("46_wvvbd")
+volume_db = -5.0
+max_distance = 1e+07
+
+[node name="DamageTakenSound" type="AudioListener2D" parent="."]
 
 [connection signal="taking_damage" from="." to="." method="_on_taking_damage"]
 [connection signal="area_entered" from="AnimatedSprite2D2/Area2D" to="AnimatedSprite2D2" method="_on_area_2d_area_entered"]

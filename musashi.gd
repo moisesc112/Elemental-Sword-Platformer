@@ -252,10 +252,10 @@ func victory():
 func update_health():
 	var healthbar = $healthbar
 	healthbar.value = hp
-	if hp >= 5:
-		healthbar.visible = false
-	else:
-		healthbar.visible = true
+#	if hp >= 5:
+#		healthbar.visible = false
+#	else:
+#		healthbar.visible = true
 
 
 func take_damage(damage):
@@ -288,7 +288,7 @@ func heal():
 func die():
 	await get_tree().create_timer(1).timeout
 	death.emit()
-	$healthbar.visible = false
+	#$healthbar.visible = false
 
 func _on_skills_skill_activated(skill_name):
 	if is_on_floor():	
@@ -628,6 +628,8 @@ func _on_input_timer_timeout():
 
 func _on_taking_damage():
 	_on_skills_skill_completed()
+	#$DamageTakenSound.make_current()
+	$AudioStreamPlayer2D.play()
 
 func _on_dash_timer_timeout():
 	is_dashing = false

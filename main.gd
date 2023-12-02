@@ -15,6 +15,11 @@ var mushroom_2_hp
 func _ready():
 	#new_game()
 	$ui/DashObstructed.hide()
+	$ui/Heart1.hide()
+	$ui/Heart2.hide()
+	$ui/Heart3.hide()
+	$ui/Heart4.hide()
+	$ui/Heart5.hide()
 	$StartMusic/AudioStreamPlayer2D.play()
 	$StartMusic.make_current()
 	pass
@@ -31,6 +36,16 @@ func new_game():
 	$LavaLevelMusic/AudioStreamPlayer2D.play()
 	$LavaLevelMusic.is_current()
 	#$DashObstructed.hide()
+	$ui/Heart1.show()
+	$ui/Heart2.show()
+	$ui/Heart3.show()
+	$ui/Heart4.show()
+	$ui/Heart5.show()
+	$ui/Heart5.frame = 0
+	$ui/Heart4.frame = 0
+	$ui/Heart3.frame = 0
+	$ui/Heart2.frame = 0
+	$ui/Heart1.frame = 0
 
 	await get_tree().create_timer(0.1).timeout
 
@@ -54,25 +69,21 @@ func new_game():
 	dummy.position = dummy_spawn_location
 	dummy_hp = dummy.hp 
 	add_child(dummy)
-	$ui.show_message("Flow Like Water")
+	$ui.show_message("Go Forth")
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-#	var viewportWidth = get_viewport().size.x
-#	var viewportHeight = get_viewport().size.y
-##
-#	var scale = viewportWidth / $ParallaxBackground/BackGround.texture.get_size().x
-##
-##	# Optional: Center the sprite, required only if the sprite's Offset>Centered checkbox is set
-#	$ParallaxBackground/BackGround.set_position(Vector2(viewportWidth/2, viewportHeight/2))
-##
-##	# Set same scale value horizontally/vertically to maintain aspect ratio
-##	# If however you don't want to maintain aspect ratio, simply set different
-##	# scale along x and y
-#	$ParallaxBackground/BackGround.set_scale(Vector2(scale, scale))
-
-	pass
+	if get_node("Musashi").hp == 4:
+		$ui/Heart5.frame = 2
+	elif get_node("Musashi").hp == 3:
+		$ui/Heart4.frame = 2
+	elif get_node("Musashi").hp == 2:
+		$ui/Heart3.frame = 2
+	elif get_node("Musashi").hp == 1:
+		$ui/Heart2.frame = 2
+	elif get_node("Musashi").hp == 0:
+		$ui/Heart1.frame = 2
 	
 func _on_child_exiting_tree(node):
 	pass
@@ -113,6 +124,11 @@ func _on_fall_zone_body_entered(body):
 			var fall_damage = 5
 			player.take_damage(fall_damage)
 			player.update_health()
+			$ui/Heart5.frame = 2
+			$ui/Heart4.frame = 2
+			$ui/Heart3.frame = 2
+			$ui/Heart2.frame = 2
+			$ui/Heart1.frame = 2
 
 
 func _on_musashi_dash_obstructed():
