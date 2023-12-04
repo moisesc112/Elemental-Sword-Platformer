@@ -74,17 +74,18 @@ func new_game():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if get_node("Musashi").hp == 4:
-		$ui/Heart5.frame = 2
-	elif get_node("Musashi").hp == 3:
-		$ui/Heart4.frame = 2
-	elif get_node("Musashi").hp == 2:
-		$ui/Heart3.frame = 2
-	elif get_node("Musashi").hp == 1:
-		$ui/Heart2.frame = 2
-	elif get_node("Musashi").hp == 0:
-		$ui/Heart1.frame = 2
-	
+
+	if get_node("Musashi").hp < 5 and get_node("Musashi").hp >= 0:
+		var heart = "ui/Heart" + str(get_node("Musashi").hp + 1)
+		get_node(heart).frame = 2
+#	if get_node("Musashi").hp == 4:
+#		get_node("ui/Heart5").frame = 2
+#	elif get_node("Musashi").hp == 3:
+#		get_node("ui/Heart4").frame = 2
+#	elif get_node("Musashi").hp == 2:
+#		$ui/Heart3.frame = 2
+#	elif get_node("Musashi").hp == 1:
+#		$ui/Heart2.frame = 2 
 func _on_child_exiting_tree(node):
 	pass
 

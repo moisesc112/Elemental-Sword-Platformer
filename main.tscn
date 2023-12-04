@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://bodrolnseekj8"]
+[gd_scene load_steps=53 format=3 uid="uid://bodrolnseekj8"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_84kgl"]
 [ext_resource type="PackedScene" uid="uid://7geiokscqb02" path="res://musashi.tscn" id="2_86c4f"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://byiantci66jqe" path="res://mushroom_monster.tscn" id="8_iy2vy"]
 [ext_resource type="Texture2D" uid="uid://brgqf7y57y4cl" path="res://art/Volcanic Area Files/layers/volcanos.png" id="8_j2dac"]
 [ext_resource type="Texture2D" uid="uid://5cawyo4tyfpg" path="res://art/Volcanic Area Files/layers/tileset.png" id="9_03djr"]
+[ext_resource type="FontFile" uid="uid://cgsg5v5wpuq55" path="res://art/Font/ThaleahFat.ttf" id="13_o6psh"]
 [ext_resource type="AudioStream" uid="uid://c0vynx5srrqu4" path="res://music/Hotline.ogg" id="15_qcso0"]
 [ext_resource type="AudioStream" uid="uid://8qk6ixn2mb5l" path="res://music/Summer Nights/summer nights.ogg" id="16_3b1up"]
 [ext_resource type="AudioStream" uid="uid://euq3sk81567n" path="res://music/mixkit-arcade-retro-game-over-213.wav" id="17_utn0f"]
@@ -1013,14 +1014,16 @@ layout_direction = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -111.0
-offset_top = 58.0
-offset_right = 104.0
-offset_bottom = 98.0
+offset_left = -103.0
+offset_top = 252.0
+offset_right = 112.0
+offset_bottom = 292.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 27
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("13_o6psh")
+theme_override_font_sizes/font_size = 36
 text = "Path Blocked
 "
 horizontal_alignment = 1
@@ -1069,7 +1072,6 @@ scale = Vector2(0.994927, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Area2D/StaticBody2D"]
 position = Vector2(136.191, 595.5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_mgis6")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="TileMap/Area2D/StaticBody2D"]
@@ -1240,19 +1242,19 @@ wait_time = 0.5
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="LavaLevelMusic"]
 stream = ExtResource("15_qcso0")
-volume_db = -5.0
+volume_db = -10.0
 
 [node name="StartMusic" type="AudioListener2D" parent="."]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="StartMusic"]
 stream = ExtResource("16_3b1up")
-volume_db = -5.0
+volume_db = -10.0
 
 [node name="GameOverMusic" type="AudioListener2D" parent="."]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="GameOverMusic"]
 stream = ExtResource("17_utn0f")
-volume_db = -5.0
+volume_db = -10.0
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="dash_obstructed" from="Musashi" to="." method="_on_musashi_dash_obstructed"]

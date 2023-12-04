@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://7geiokscqb02"]
+[gd_scene load_steps=91 format=3 uid="uid://7geiokscqb02"]
 
 [ext_resource type="Texture2D" uid="uid://dhnbdq1gftggt" path="res://art/musashi/attack_0.png" id="1_134dd"]
 [ext_resource type="Script" path="res://musashi.gd" id="1_sydoj"]
@@ -45,7 +45,11 @@
 [ext_resource type="Texture2D" uid="uid://c8j2ae0n5d3lc" path="res://art/musashi/x_2.png" id="26_qvp4v"]
 [ext_resource type="PackedScene" uid="uid://bnwj14vx3oaj0" path="res://air_strike.tscn" id="33_dqfk5"]
 [ext_resource type="PackedScene" uid="uid://bf1a1ie5wyfhn" path="res://water_dash.tscn" id="34_4xem5"]
+[ext_resource type="Texture2D" uid="uid://chevvernmajks" path="res://art/thunderbolt-anim-files/PNG/thunderbolt-animation.png" id="44_lnhak"]
 [ext_resource type="AudioStream" uid="uid://cmposi20rvm0b" path="res://music/523769__matrixxx__retro-hit.wav" id="46_wvvbd"]
+[ext_resource type="AudioStream" uid="uid://v1ja6pvrksdr" path="res://music/649360__sonofxaudio__sword_thunder01.wav" id="48_isgjh"]
+[ext_resource type="AudioStream" uid="uid://bnwryxqkjdjow" path="res://music/655341__blazewasbored__unsheathe-blade.ogg" id="49_qidm0"]
+[ext_resource type="AudioStream" uid="uid://w48qvbkimpwf" path="res://music/683099__florianreichelt__computer-mouse-click.mp3" id="50_xfo5h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c5fg6"]
 atlas = ExtResource("4_is2yr")
@@ -490,6 +494,18 @@ region = Rect2(0, 0, 175, 100)
 atlas = ExtResource("12_hd3ft")
 region = Rect2(175, 0, 175, 100)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2oxun"]
+atlas = ExtResource("44_lnhak")
+region = Rect2(0, 448, 128, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyhgt"]
+atlas = ExtResource("44_lnhak")
+region = Rect2(0, 336, 128, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udr8a"]
+atlas = ExtResource("44_lnhak")
+region = Rect2(0, 224, 128, 112)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ov50l"]
 animations = [{
 "frames": [{
@@ -624,6 +640,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_2oxun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyhgt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udr8a")
+}],
+"loop": true,
+"name": &"thunderbolt",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("26_qvp4v")
 }],
 "loop": true,
@@ -703,7 +733,8 @@ wait_time = 0.5
 position = Vector2(-112, 16)
 scale = Vector2(1.51964, 1)
 sprite_frames = SubResource("SpriteFrames_ov50l")
-animation = &"flash2"
+animation = &"thunderbolt"
+frame_progress = 0.824821
 script = SubResource("GDScript_sgrq6")
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D2"]
@@ -763,12 +794,30 @@ wait_time = 0.5
 
 [node name="WaterDash" parent="." instance=ExtResource("34_4xem5")]
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="DamageTakenSound" type="AudioStreamPlayer2D" parent="."]
+visible = false
 stream = ExtResource("46_wvvbd")
-volume_db = -5.0
+volume_db = -20.0
 max_distance = 1e+07
 
-[node name="DamageTakenSound" type="AudioListener2D" parent="."]
+[node name="FlashAttackSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("48_isgjh")
+volume_db = -10.0
+max_distance = 1e+08
+
+[node name="UnsheatheSwordSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("49_qidm0")
+volume_db = -15.0
+max_distance = 1e+08
+
+[node name="UnsheatheTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="BlockedSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("50_xfo5h")
+volume_db = -5.0
+max_distance = 1e+08
 
 [connection signal="taking_damage" from="." to="." method="_on_taking_damage"]
 [connection signal="area_entered" from="AnimatedSprite2D2/Area2D" to="AnimatedSprite2D2" method="_on_area_2d_area_entered"]
@@ -777,3 +826,4 @@ max_distance = 1e+07
 [connection signal="timeout" from="inputTimer" to="." method="_on_input_timer_timeout"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="StrikeTimer" to="." method="_on_strike_timer_timeout"]
+[connection signal="timeout" from="UnsheatheTimer" to="." method="_on_unsheathe_timer_timeout"]

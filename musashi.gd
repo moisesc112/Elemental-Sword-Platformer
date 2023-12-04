@@ -298,6 +298,7 @@ func _on_skills_skill_activated(skill_name):
 			attack_in_progress = true
 			$AnimatedSprite2D.animation = "attack"
 			$PlayerSprite.animation = "attack"
+			$UnsheatheTimer.start()
 			await get_tree().create_timer(0.6).timeout
 			if being_damaged == false:
 				use_fire_strike()
@@ -420,8 +421,8 @@ func use_fire_strike():
 	#is_fire_striking = true
 	var fire_strike = fire_strike_attack.instantiate()
 	get_tree().get_root().add_child(fire_strike)
-	fire_strike.get_node("/root/FireStrike/CollisionShape2D").shape.height = 72
-	fire_strike.get_node("/root/FireStrike/CollisionShape2D").shape.radius = 20
+	#fire_strike.get_node("/root/FireStrike/CollisionShape2D").shape.height = 72
+	#fire_strike.get_node("/root/FireStrike/CollisionShape2D").shape.radius = 20
 	
 	if fire_strike_direction == "right":
 		fire_strike.global_position = $RightMarker.global_position
@@ -445,7 +446,7 @@ func use_flash_attack():
 		print("hey")
 		if body_collision == false: #and (dash_direction == 1 or -1):
 			if dash_direction == 1:
-				
+				$FlashAttackSound.play()
 				self.set_physics_process(false)
 				attack_in_progress = true
 				$AnimatedSprite2D.animation = "flash1"
@@ -465,7 +466,7 @@ func use_flash_attack():
 				flash_attack_end()
 				
 			elif dash_direction == -1:
-				
+				$FlashAttackSound.play()
 				self.set_physics_process(false)
 				attack_in_progress = true
 				$AnimatedSprite2D.animation = "flash1"
@@ -486,12 +487,14 @@ func use_flash_attack():
 		else:
 			dash_obstructed.emit()
 			dash_blocked = true
+			$BlockedSound.play()
 			print("here")
 
 	elif (!Input.is_action_pressed("move_right") and !Input.is_action_pressed("move_left")) and (Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down")):
 		print("hey2")
 		if vertical_collision == false: #and (dash_direction == 2 or -2):
 			if dash_direction == 2:
+				$FlashAttackSound.play()
 				self.set_physics_process(false)
 				attack_in_progress = true
 				$AnimatedSprite2D.animation = "flash1"
@@ -511,6 +514,7 @@ func use_flash_attack():
 				flash_attack_end()
 				
 			elif dash_direction == -2:
+				$FlashAttackSound.play()
 				self.set_physics_process(false)
 				attack_in_progress = true
 				$AnimatedSprite2D.animation = "flash1"
@@ -530,11 +534,13 @@ func use_flash_attack():
 		else:
 			dash_obstructed.emit()
 			dash_blocked = true
+			$BlockedSound.play()
 			
 	#elif Input.is_action_pressed("move_up") or Input.is_action_pressed("move_right"):
 	elif diagonal_collision == false and (dash_direction == 3 or dash_direction == -3 or dash_direction == 4 or dash_direction == -4):
 		print("hey3")
 		if dash_direction == 3:
+			$FlashAttackSound.play()
 			self.set_physics_process(false)
 			attack_in_progress = true
 			$AnimatedSprite2D.animation = "flash1"
@@ -555,6 +561,7 @@ func use_flash_attack():
 			flash_attack_end()
 		
 		elif dash_direction == -3:
+			$FlashAttackSound.play()
 			self.set_physics_process(false)
 			attack_in_progress = true
 			$AnimatedSprite2D.animation = "flash1"
@@ -575,6 +582,7 @@ func use_flash_attack():
 			flash_attack_end()
 			
 		elif dash_direction == 4:
+			$FlashAttackSound.play()
 			self.set_physics_process(false)
 			attack_in_progress = true
 			$AnimatedSprite2D.animation = "flash1"
@@ -595,6 +603,7 @@ func use_flash_attack():
 			flash_attack_end()
 			
 		elif dash_direction == -4:
+			$FlashAttackSound.play()
 			self.set_physics_process(false)
 			attack_in_progress = true
 			$AnimatedSprite2D.animation = "flash1"
@@ -617,6 +626,7 @@ func use_flash_attack():
 		print("hey4")
 		dash_obstructed.emit()
 		dash_blocked = true
+		$BlockedSound.play()
 		
 func _on_iframe_timer_timeout():
 	self.set_collision_layer_value(2, true)
@@ -629,7 +639,7 @@ func _on_input_timer_timeout():
 func _on_taking_damage():
 	_on_skills_skill_completed()
 	#$DamageTakenSound.make_current()
-	$AudioStreamPlayer2D.play()
+	$DamageTakenSound.play()
 
 func _on_dash_timer_timeout():
 	is_dashing = false
@@ -645,9 +655,10 @@ func flash_attack_start():
 	$AnimatedSprite2D.animation = "flash3"
 
 func flash_attack_end():
+	#$FlashAttackSound.play()
 	$AnimatedSprite2D2.show()
 	$AnimatedSprite2D2.play()
-	$AnimatedSprite2D2.animation = "flash2"
+	$AnimatedSprite2D2.animation = "thunderbolt"
 	$AnimatedSprite2D2/Area2D.show()
 	await get_tree().create_timer(0.1).timeout
 	$AnimatedSprite2D2.hide()
@@ -657,3 +668,7 @@ func flash_attack_end():
 	$PlayerSprite.show()
 	$DashTimer.start()
 	is_dashing = true
+
+
+func _on_unsheathe_timer_timeout():
+	$UnsheatheSwordSound.play()
