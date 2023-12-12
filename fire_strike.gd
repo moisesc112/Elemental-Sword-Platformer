@@ -70,6 +70,38 @@ func _on_body_entered(body):
 		$ImpactSprite.play()
 		await get_tree().create_timer(0.3).timeout
 		destroy()
+	elif body is LavaBoss:
+		impact_happened = true
+		var lava_boss: LavaBoss = body as LavaBoss
+		lava_boss.take_damage(damage)
+		lava_boss.update_health()
+		$FireImpactSound.play()
+		$FireTravelSound.stop()
+		$AnimatedSprite2D.hide()
+		#$CollisionShape2D.disabled = true
+		self.set_collision_mask_value(1, false)
+		self.set_collision_mask_value(2, false)
+		SPEED = 0
+		$ImpactSprite.show()
+		$ImpactSprite.play()
+		await get_tree().create_timer(0.3).timeout
+		destroy()
+	elif body is Skull:
+		impact_happened = true
+		var fire_skull: Skull = body as Skull
+		fire_skull.take_damage(damage)
+		fire_skull.update_health()
+		$FireImpactSound.play()
+		$FireTravelSound.stop()
+		$AnimatedSprite2D.hide()
+		#$CollisionShape2D.disabled = true
+		self.set_collision_mask_value(1, false)
+		self.set_collision_mask_value(2, false)
+		SPEED = 0
+		$ImpactSprite.show()
+		$ImpactSprite.play()
+		await get_tree().create_timer(0.3).timeout
+		destroy()
 	else:
 		$FireImpactSound.play()
 		$FireTravelSound.stop()

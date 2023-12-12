@@ -126,7 +126,7 @@ script = ExtResource("1_qclpl")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mpkbm")
 animation = &"fire_missle"
-frame_progress = 0.924712
+frame_progress = 0.553199
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 0)

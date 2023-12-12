@@ -52,6 +52,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	#print(hp)
 	velocity.x = 0 # The player's movement vector.
 	keyboard_inputs()
 	calculate_movement(delta)
@@ -345,20 +346,22 @@ func _on_skills_skill_activated(skill_name):
 			else:
 				speed = 150
 			
-
+#	elif air_jump:
+#		print("potato")
+#		if skill_name == "skill_2":
+#			use_flash_attack()
 	elif !is_on_floor() and air_jump:
 		if skill_name == "skill_3":
 			if Input.is_action_pressed("move_left"):
 				if temp_direction == 1:
 					$AnimatedSprite2D.animation = "air_strike_reverse"
-					$PlayerSprite.animation = "double_jump"
+					$PlayerSprite.animation = "double_jump_reversed"
 					#$AnimatedSprite2D.animation = "air_strike"
 					#$AnimatedSprite2D.flip_h = true 
 				elif temp_direction == -1:
 					$AnimatedSprite2D.animation = "air_strike"
 					$PlayerSprite.animation = "double_jump"
 					#$AnimatedSprite2D.flip_h = true
-				print("pasta")
 				$AirStrike.position.x = -32
 				direction = -1
 				velocity.y = jump_speed * 0.8
@@ -372,7 +375,7 @@ func _on_skills_skill_activated(skill_name):
 					#$AnimatedSprite2D.flip_h = false
 				elif temp_direction == -1:
 					$AnimatedSprite2D.animation = "air_strike_reverse"
-					$PlayerSprite.animation = "double_jump"
+					$PlayerSprite.animation = "double_jump_reversed"
 					#$AnimatedSprite2D.animation = "air_strike"
 					#$AnimatedSprite2D.flip_h = false
 				$AirStrike.position.x = 0
@@ -387,16 +390,22 @@ func _on_skills_skill_activated(skill_name):
 					$AnimatedSprite2D.animation = "air_strike"
 					$AnimatedSprite2D.flip_h = true 
 					$PlayerSprite.animation = "double_jump"
+					#temp_direction = -1
 				else: 
 					$AirStrike.position.x = 0
 					$AnimatedSprite2D.animation = "air_strike"
 					$AnimatedSprite2D.flip_h = false
 					$PlayerSprite.animation = "double_jump"
+					#temp_direction = 1
 					#await get_tree().create_timer(0.01).timeout
 					#$PlayerSprite.animation = "jump"
 				direction = 0
 				velocity.y = jump_speed * 0.8
 				air_jump = false
+#				if !air_jump:
+#					print("potato")
+#					if skill_name == "skill_2":
+#						use_flash_attack()
 				$AirStrike.set_collision_mask_value(1, true)
 				$AirStrike.set_collision_mask_value(2, true)
 		else:

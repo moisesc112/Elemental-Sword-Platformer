@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://7geiokscqb02"]
+[gd_scene load_steps=94 format=3 uid="uid://7geiokscqb02"]
 
 [ext_resource type="Texture2D" uid="uid://dhnbdq1gftggt" path="res://art/musashi/attack_0.png" id="1_134dd"]
 [ext_resource type="Script" path="res://musashi.gd" id="1_sydoj"]
@@ -94,6 +94,18 @@ region = Rect2(128, 0, 128, 96)
 [sub_resource type="AtlasTexture" id="AtlasTexture_n2ujg"]
 atlas = ExtResource("5_gkpp8")
 region = Rect2(256, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yreyr"]
+atlas = ExtResource("5_gkpp8")
+region = Rect2(256, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejb3m"]
+atlas = ExtResource("5_gkpp8")
+region = Rect2(128, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_weqga"]
+atlas = ExtResource("5_gkpp8")
+region = Rect2(0, 0, 128, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t5etj"]
 atlas = ExtResource("5_54vqo")
@@ -204,6 +216,26 @@ animations = [{
 }],
 "loop": false,
 "name": &"double_jump",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yreyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejb3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_weqga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_e74tf")
+}, {
+"duration": 1000.0,
+"texture": ExtResource("7_i1ed1")
+}],
+"loop": false,
+"name": &"double_jump_reversed",
 "speed": 9.0
 }, {
 "frames": [{
@@ -679,7 +711,14 @@ func _on_area_2d_body_entered(body):
 		var mushroom: Mushroom = body as Mushroom
 		mushroom.take_damage(damage)
 		mushroom.update_health()
-		
+	if body is LavaBoss:
+		var lava_boss: LavaBoss = body as LavaBoss
+		lava_boss.take_damage(damage)
+		lava_boss.update_health()
+	if body is Skull:
+		var fire_skull: Skull = body as Skull
+		fire_skull.take_damage(damage)
+		fire_skull.update_health()
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vacuk"]
@@ -696,7 +735,7 @@ flash_attack = ExtResource("3_ooqua")
 position = Vector2(-10, -48)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_uaokb")
-animation = &"idle"
+animation = &"double_jump_reversed"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false

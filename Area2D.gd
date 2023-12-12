@@ -30,3 +30,15 @@ func _on_body_entered(body):
 		mushroom.update_health()
 		self.set_collision_mask_value(1, false)
 		self.set_collision_mask_value(2, false)
+	elif body is LavaBoss:
+		var lava_boss: LavaBoss = body as LavaBoss
+		lava_boss.take_damage(air_strike_damage)
+		lava_boss.update_health()
+		self.set_collision_mask_value(1, false)
+		self.set_collision_mask_value(2, false)
+	elif body is Skull:
+		var fire_skull: Skull = body as Skull
+		fire_skull.take_damage(air_strike_damage)
+		fire_skull.update_health()
+		self.set_collision_mask_value(1, false)
+		self.set_collision_mask_value(2, false)
