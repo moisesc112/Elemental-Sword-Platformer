@@ -2,6 +2,8 @@ extends CanvasLayer
 
 signal start_game
 
+func _ready():
+	$PlayerStartScreen.play("run")
 
 func show_message(text):
 	$Message.text = text
@@ -15,7 +17,7 @@ func show_game_over():
 	await $MessageTimer.timeout
 	#await get_tree().create_timer(2).timeout
 	print("post timer")
-	$Message.text = "Look How Infinite You Are"
+	$Message.text = "Continue?"
 	$Message.show()
 	await get_tree().create_timer(1.0).timeout
 	$StartButton.show()
@@ -25,6 +27,9 @@ func show_game_over():
 func _on_start_button_pressed():
 	$StartButton.hide()
 	start_game.emit()
+	$TitleScreenBackground.hide()
+	$PlayerStartScreen.pause()
+	$PlayerStartScreen.hide()
 
 func _on_message_timer_timeout():
 	$Message.hide()

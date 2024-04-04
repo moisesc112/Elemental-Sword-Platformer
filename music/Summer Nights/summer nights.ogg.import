@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://8qk6ixn2mb5l"
+path="res://.godot/imported/summer nights.ogg-602fa303edd3c18f56f7c58a575c1e74.oggvorbisstr"
+
+[deps]
+
+source_file="res://music/Summer Nights/summer nights.ogg"
+dest_files=["res://.godot/imported/summer nights.ogg-602fa303edd3c18f56f7c58a575c1e74.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

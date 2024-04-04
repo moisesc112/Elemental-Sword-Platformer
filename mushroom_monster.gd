@@ -37,14 +37,17 @@ func _physics_process(delta):
 		SPEED = -SPEED
 		
 	if SPEED > 0:
-		$AnimatedSprite2D.flip_h = false
+		#$AnimatedSprite2D.flip_h = false
+		$HoundSprite.flip_h = true
 	else:
-		$AnimatedSprite2D.flip_h = true
-		
+		#$AnimatedSprite2D.flip_h = true
+		$HoundSprite.flip_h = false
 	if velocity.x != 0:
-		$AnimatedSprite2D.animation = "run"
+		#$AnimatedSprite2D.animation = "run"
+		$HoundSprite.animation = "run"
 	
-	$AnimatedSprite2D.play()
+	#$AnimatedSprite2D.play()
+	$HoundSprite.play()
 	
 func _on_ready():
 	hide()

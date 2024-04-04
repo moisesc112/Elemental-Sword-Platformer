@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://da0eispffmu5a"
+path="res://.godot/imported/Boss Fight 2.wav-27dafd7f0f99f02ca60fb315af28ea9d.sample"
+
+[deps]
+
+source_file="res://music/Boss Fight 2 Files/Boss Fight 2.wav"
+dest_files=["res://.godot/imported/Boss Fight 2.wav-27dafd7f0f99f02ca60fb315af28ea9d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

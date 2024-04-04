@@ -1,12 +1,53 @@
-[gd_scene load_steps=7 format=3 uid="uid://daaux2ol3qd7g"]
+[gd_scene load_steps=29 format=3 uid="uid://daaux2ol3qd7g"]
 
 [ext_resource type="Texture2D" uid="uid://cbawmvs624uow" path="res://art/fire art/fire_1.png" id="1_0hgh2"]
 [ext_resource type="Script" path="res://fire_strike.gd" id="1_qclpl"]
 [ext_resource type="Texture2D" uid="uid://b6ofhcfhrko62" path="res://art/fire art/fire_2.png" id="2_3dsr8"]
+[ext_resource type="Texture2D" uid="uid://cllh5338omm2p" path="res://art/Magic Pack 5 Files/sprites/fire-missile/sprites/fire-missile1.png" id="2_64qvq"]
 [ext_resource type="Texture2D" uid="uid://cj1kihefhgac" path="res://art/fire art/fire_3.png" id="3_tglkb"]
+[ext_resource type="Texture2D" uid="uid://cgjwfkylig43h" path="res://art/Magic Pack 5 Files/sprites/fire-missile/sprites/fire-missile2.png" id="3_yofjp"]
+[ext_resource type="Texture2D" uid="uid://bsniciayhljxh" path="res://art/Magic Pack 5 Files/sprites/fire-missile/sprites/fire-missile3.png" id="4_08xus"]
+[ext_resource type="Texture2D" uid="uid://cubl3mst5ihpf" path="res://art/Magic Pack 5 Files/sprites/fire-missile/sprites/fire-missile4.png" id="5_oao3l"]
+[ext_resource type="Texture2D" uid="uid://dhsy33grilp80" path="res://art/Magic Pack 5 Files/sprites/fire-missile/sprites/fire-missile5.png" id="6_wo0dm"]
+[ext_resource type="Texture2D" uid="uid://cp0gh5ehdj437" path="res://art/Magic Pack 5 Files/sprites/flash/sprites/flash1.png" id="7_muunl"]
+[ext_resource type="Texture2D" uid="uid://bntrr0hphguix" path="res://art/Magic Pack 5 Files/sprites/flash/sprites/flash2.png" id="8_8hrqc"]
+[ext_resource type="Texture2D" uid="uid://cmxeawcgggvwq" path="res://art/Magic Pack 5 Files/sprites/flash/sprites/flash3.png" id="9_mjtmu"]
+[ext_resource type="Texture2D" uid="uid://ktamle078twd" path="res://art/Magic Pack 5 Files/sprites/flash/sprites/flash4.png" id="10_u1kco"]
+[ext_resource type="Texture2D" uid="uid://ri7sj2nv2fus" path="res://art/Magic Pack 5 Files/sprites/flash/sprites/flash5.png" id="11_kc8ky"]
+[ext_resource type="Texture2D" uid="uid://cs20l8fvlnla" path="res://art/Magic Pack 5 Files/sprites/flash/sprites/flash6.png" id="12_o1oy7"]
+[ext_resource type="Texture2D" uid="uid://b3uudn400if3l" path="res://art/Magic Pack 5 Files/sprites/flash/sprites/flash7.png" id="13_1pe7k"]
+[ext_resource type="Texture2D" uid="uid://cbhqwr3mjtmsk" path="res://art/Magic Pack 5 Files/sprites/flash/sprites/flash8.png" id="14_jq54o"]
+[ext_resource type="Texture2D" uid="uid://bebtvpy1ugb6m" path="res://art/Magic Pack 5 Files/sprites/flash/sprites/flash9.png" id="15_onnpj"]
+[ext_resource type="Texture2D" uid="uid://byde5a6esxfuh" path="res://art/Magic Pack 5 Files/sprites/flash/sprites/flash10.png" id="16_5nuhl"]
+[ext_resource type="Texture2D" uid="uid://2d0dqb6k3piq" path="res://art/Magic Pack 5 Files/sprites/flash/sprites/flash11.png" id="17_yt0dd"]
+[ext_resource type="Texture2D" uid="uid://jspwa3pbptex" path="res://art/Magic Pack 5 Files/sprites/flash/sprites/flash12.png" id="18_ewxgg"]
+[ext_resource type="Texture2D" uid="uid://cbaociwdasi2y" path="res://art/Magic Pack 5 Files/sprites/flash/sprites/flash13.png" id="19_nr1q4"]
+[ext_resource type="Texture2D" uid="uid://b5xf1vtdxeex1" path="res://art/Magic Pack 5 Files/sprites/flash/sprites/flash14.png" id="20_v2o3b"]
+[ext_resource type="AudioStream" uid="uid://bnl076dif4tqn" path="res://music/fireball-whoosh-1-179125.mp3" id="24_oxa30"]
+[ext_resource type="AudioStream" uid="uid://bxewwf7s70w8k" path="res://music/431174__highpixel__fireball-explosion.wav" id="25_6d34h"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mpkbm"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_64qvq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yofjp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_08xus")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oao3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wo0dm")
+}],
+"loop": true,
+"name": &"fire_missle",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_0hgh2")
@@ -23,24 +64,92 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yxd4u"]
-radius = 20.0
-height = 72.0
+radius = 14.0
+height = 46.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5sll8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_muunl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8hrqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mjtmu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_u1kco")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_kc8ky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_o1oy7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_1pe7k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_jq54o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_onnpj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_5nuhl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_yt0dd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ewxgg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_nr1q4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_v2o3b")
+}],
+"loop": true,
+"name": &"impact",
+"speed": 28.0
+}]
 
 [node name="FireStrike" type="Area2D"]
 position = Vector2(70, 0)
 collision_layer = 3
 collision_mask = 3
-
 script = ExtResource("1_qclpl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_mpkbm")
-animation = &"strike"
+animation = &"fire_missle"
+frame_progress = 0.553199
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
+position = Vector2(4, 0)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_yxd4u")
+
+[node name="ImpactSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(25, 0)
+sprite_frames = SubResource("SpriteFrames_5sll8")
+animation = &"impact"
+frame = 2
+frame_progress = 0.991983
+
+[node name="FireTravelSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("24_oxa30")
+volume_db = -10.0
+autoplay = true
+max_distance = 1e+09
+
+[node name="FireImpactSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("25_6d34h")
+max_distance = 1e+09
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

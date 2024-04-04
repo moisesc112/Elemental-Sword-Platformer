@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dc632xnckryin"]
+[gd_scene load_steps=6 format=3 uid="uid://dc632xnckryin"]
 
 [ext_resource type="Script" path="res://Skills.gd" id="1_al5wb"]
 [ext_resource type="PackedScene" uid="uid://b8kpjv2x3au5h" path="res://skill.tscn" id="2_w70dt"]
-[ext_resource type="Texture2D" uid="uid://cq0hixk8hmnrh" path="res://art/musashi/skills/slash.png" id="3_xd0br"]
-[ext_resource type="Texture2D" uid="uid://diou5wbffkrbo" path="res://art/musashi/skills/block.png" id="4_mmp0i"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kw3pr"]
+load_path = "res://.godot/imported/fire_strike.png-ed1989571f19efeafbc59bbb4d96fbed.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g08si"]
+load_path = "res://.godot/imported/lightning_strike.png-caa4dbed95ec668063f876bca4f399fd.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fwo0y"]
+load_path = "res://.godot/imported/air_strike.png-0408d1eb9712fd50bf6d107c4755a3fe.ctex"
 
 [node name="Skills" type="ColorRect"]
 anchors_preset = 7
@@ -11,37 +18,65 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -171.0
-offset_top = -93.0
-offset_right = 171.0
+offset_left = -90.0
+offset_top = -68.0
+offset_right = 126.0
+offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0.380392, 0.219608, 0.0627451, 1)
 script = ExtResource("1_al5wb")
 
 [node name="Skill1" parent="." instance=ExtResource("2_w70dt")]
-layout_mode = 0
-offset_left = 15.0
-offset_top = 6.0
-offset_right = 101.0
-offset_bottom = 87.0
-skill_image = ExtResource("3_xd0br")
+layout_mode = 1
+offset_left = -102.0
+offset_right = -66.0
+skill_image = SubResource("CompressedTexture2D_kw3pr")
 skill_cooldown = 1
 
 [node name="Skill2" parent="." instance=ExtResource("2_w70dt")]
-layout_mode = 0
-offset_left = 128.0
-offset_top = 6.0
-offset_right = 214.0
-offset_bottom = 87.0
-skill_image = ExtResource("4_mmp0i")
+layout_mode = 1
+anchors_preset = 5
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = -23.0
+offset_top = 9.0
+offset_right = 13.0
+offset_bottom = 45.0
+grow_vertical = 1
+skill_image = SubResource("CompressedTexture2D_g08si")
 
 [node name="Skill3" parent="." instance=ExtResource("2_w70dt")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -52.0
+offset_top = 9.0
+offset_right = -16.0
+offset_bottom = 45.0
+grow_horizontal = 0
+grow_vertical = 1
+skill_image = SubResource("CompressedTexture2D_fwo0y")
+
+[node name="Skill4" parent="." instance=ExtResource("2_w70dt")]
+visible = false
 layout_mode = 0
-offset_left = 240.0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 343.0
 offset_top = 6.0
-offset_right = 326.0
+offset_right = 429.0
 offset_bottom = 87.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="skill_done" from="Skill1" to="." method="_on_skill_1_skill_done"]
 [connection signal="skill_done" from="Skill2" to="." method="_on_skill_2_skill_done"]
+[connection signal="skill_done" from="Skill3" to="." method="_on_skill_3_skill_done"]
+[connection signal="skill_done" from="Skill4" to="." method="_on_skill_4_skill_done"]
